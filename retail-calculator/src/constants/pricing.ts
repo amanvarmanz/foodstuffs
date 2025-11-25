@@ -1,5 +1,18 @@
 export type RegionCode = "AUK" | "WLG" | "WAI" | "CHC" | "TAS"
 
+export type RegionPair = {
+    value: RegionCode,
+    label: string
+}
+
+export const SelectRegion : RegionPair[] = [
+    { value: "AUK", label: "Auckland" },
+    { value: "WLG", label: "Wellington" },
+    { value: "WAI", label: "Waikato" },
+    { value: "CHC", label: "Christchurch" },
+    { value: "TAS", label: "Tauranga" },
+]
+
 export const DISCOUNT : Record<number, number> = {    
     1000: 0.03,
     5000: 0.05,
