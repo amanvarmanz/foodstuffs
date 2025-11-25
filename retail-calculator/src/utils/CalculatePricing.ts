@@ -23,6 +23,6 @@ export const getDiscountedPrice = (price: number, quantity: number) : number => 
 }
 
 
-const getAddedTax = (orderValue: number, regionCode: RegionCode) : number => {
+export const getAddedTax = (orderValue: number, regionCode: RegionCode) : number => {
     return orderValue * (1 + TAX[regionCode])
 }
