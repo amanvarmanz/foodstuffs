@@ -12,8 +12,8 @@ This project was created as part of a technical exercise demonstrating slicing, 
 
 **Getting Started**
 1. Clone the repository:
-- git clone https://github.com/< your-username >/< repo-name >.git
-- cd < repo-name >
+- git clone https://github.com/amanvarmanz/foodstuffs.git
+- cd foodstuffs
 
 2. Install packages:
 - npm install
