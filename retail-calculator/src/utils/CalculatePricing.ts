@@ -1,28 +1,36 @@
 import { DISCOUNT, TAX, type RegionCode } from "../constants/pricing"
 
-
-
-
-export const getDiscountedPrice = (price: number, quantity: number) : number => {
-
-    const orderValue = price * quantity
+export const getDiscount = (orderValue: number ) : number => {
 
     if (orderValue >= 50000) {
-        return orderValue * (1 - DISCOUNT[50000])
+        return DISCOUNT[50000]
     } else if (orderValue >= 10000) {
-        return orderValue * (1 - DISCOUNT[10000])
+        return DISCOUNT[10000]
     } else if (orderValue >= 7000) {
-        return orderValue * (1 - DISCOUNT[7000])
+        return DISCOUNT[7000]
     } else if (orderValue >= 5000) {
-        return orderValue * (1 - DISCOUNT[5000])
+        return DISCOUNT[5000]
     } else if (orderValue >= 1000) {
-        return orderValue * (1 - DISCOUNT[1000])
+        return DISCOUNT[1000]
     } else {
-        return orderValue
+        return 0
     }
 }
 
-
-export const getAddedTax = (orderValue: number, regionCode: RegionCode) : number => {
-    return orderValue * (1 + TAX[regionCode])
+export const getTax = (regionCode: RegionCode) : number => {
+    return TAX[regionCode]
 }
+
+export const getTotal = (price: number, quantity: number, region: RegionCode): number => {
+    const orderValue = price * quantity;        
+    const discountRate = getDiscount(orderValue);      
+    const taxRate = getTax(region);                   
+
+    const discountAmount = orderValue * discountRate;
+    const taxable = orderValue - discountAmount;
+
+    const taxAmount = taxable * taxRate;
+    const total = taxable + taxAmount;
+
+  return Number(total.toFixed(2));
+};
