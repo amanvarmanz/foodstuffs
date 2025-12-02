@@ -4,12 +4,12 @@ import { getDiscount, getTax, getTotal } from "./CalculatePricing";
 
 describe("Retail Pricing Calculator Logic", () => {
   it("returns the correct discount tier rates", () => {
-    expect(getDiscount(500)).toBe(0);         // no discount
-    expect(getDiscount(1500)).toBe(0.03);     // 3%
-    expect(getDiscount(6000)).toBe(0.05);     // 5%
-    expect(getDiscount(7500)).toBe(0.07);     // 7%
-    expect(getDiscount(15000)).toBe(0.10);    // 10%
-    expect(getDiscount(60000)).toBe(0.15);    // 15%
+    expect(getDiscount(500)).toBe(0);
+    expect(getDiscount(1500)).toBe(0.03);
+    expect(getDiscount(6000)).toBe(0.05);
+    expect(getDiscount(7500)).toBe(0.07);
+    expect(getDiscount(15000)).toBe(0.10);
+    expect(getDiscount(60000)).toBe(0.15);
   });
 
   it("returns correct tax rates per region", () => {
@@ -21,10 +21,12 @@ describe("Retail Pricing Calculator Logic", () => {
   });
 
   it("calculates subtotal, discount, tax, and total correctly", () => {
-    // 200 items at 10 = subtotal 2000
-    const result = getTotal(200, 10, "AUK");
-    console.log(result)
-    // Final total = 1940 + 132.59 = 2072.59
-    expect(result).toBeCloseTo(2072.89, 2);
+    const lowTotal = getTotal(100, 5, "WLG")  /* $100 per unit | 5 units | 0% Discount | 8% Tax */ 
+    const midTotal = getTotal(200, 10, "AUK") /* $200 per unit | 10 units | 3% Discount | 6.85% Tax */
+    const highTotal = getTotal(400, 20, "TAS"); /* $400 per unit | 20 units | 7% Discount | 8.25  % Tax */
+
+    expect(lowTotal).toBeCloseTo(540, 2);
+    expect(midTotal).toBeCloseTo(2072.89, 2);
+    expect(highTotal).toBeCloseTo(8053.80, 2);
   });
 });

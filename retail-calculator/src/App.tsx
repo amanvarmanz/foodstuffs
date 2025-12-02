@@ -37,8 +37,8 @@ function App() {
       <MantineProvider>
         <div style={{ width:'25%', margin: 'auto',}}>
           <Text c={'black'} fz={25}> Retail Calculator </Text>
-          <NumberInput value={quantity} label="Number of Items" placeholder="Enter Number of Items" onChange={onQuantity}/>
           <NumberInput value={price} label="Price Per Item" placeholder="Enter Price Per Item" onChange={onPrice}/>
+          <NumberInput value={quantity} label="Number of Items" placeholder="Enter Number of Items" onChange={onQuantity}/>
           <Select value={region} label="Select Region" placeholder={'Select Region'} data={SelectRegion} onChange={onRegion}/>
           <Text c={'black'} fz={25}>Total: {total}</Text>
         </div>

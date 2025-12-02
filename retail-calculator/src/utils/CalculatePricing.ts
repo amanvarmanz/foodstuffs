@@ -24,7 +24,7 @@ export const getTax = (regionCode: RegionCode) : number => {
 export const getTotal = (price: number, quantity: number, region: RegionCode): number => {
     const orderValue = price * quantity;        
     const discountRate = getDiscount(orderValue);      
-    const taxRate = getTax(region);                   
+    const taxRate = getTax(region);      
 
     const discountAmount = orderValue * discountRate;
     const taxable = orderValue - discountAmount;
@@ -32,5 +32,5 @@ export const getTotal = (price: number, quantity: number, region: RegionCode): n
     const taxAmount = taxable * taxRate;
     const total = taxable + taxAmount;
 
-  return Number(total.toFixed(2));
+    return Number(total.toFixed(2));
 };
